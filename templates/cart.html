@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block header %}
+    <section>
+        <div><form action="/rgz/cart"><button class="button_header" type="submit">Корзина</button></form></div>
+        <div><form action="/rgz/"><button class="button_header" type="submit">Товары</button></form></div>
+        <div><form action="/rgz/login"><button class="button_header" type="submit">Логин</button></form></div>
+        <div><form action="/rgz/register"><button class="button_header" type="submit">Регистрация</button></form></div>
+        <div><form action="/rgz/logout"><button class="button_header" type="submit">Выйти</button></form></div>
+    </section>
+{% endblock %}
+
+{% block main%}
+    <div>
+        <h1>Корзина</h1>
+        <ul>
+            {% for item in cart_itemss %}
+                <li>
+                    {{ item.product.name }} - Количество: {{ item.quantity }}
+                    <form action="{{ url_for('rgz.remove_from_cart', item_id=item.id) }}" method="post">
+                        <input type="submit" value="Удалить">
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+        <p>Общая стоимость: {{ total_cost }}$</p>
+        <form action="{{ url_for('rgz.checkout') }}" method="post">
+            <input type="submit" value="Оформить покупку">
+        </form>
+    </div>
+{% endblock %}

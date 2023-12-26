@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block header %}
+<section>
+    <div><form action="/rgz/cart"><button class="button_header" type="submit">Корзина</button></form></div>
+    <div><form action="/rgz/"><button class="button_header" type="submit">Товары</button></form></div>
+    <div><form action="/rgz/login"><button class="button_header" type="submit">Логин</button></form></div>
+    <div><form action="/rgz/register"><button class="button_header" type="submit">Регистрация</button></form></div>
+    <div><form action="/rgz/logout"><button class="button_header" type="submit">Выйти</button></form></div>
+</section>
+{% endblock %}
+
+{% block main%}
+    <div class="logreg">
+        <form id="registrationForm" method="POST">
+            <div>
+                <h2>
+                    Регистрация
+                </h2>
+                <input type="text" name="username" placeholder="Имя пользователя">
+                <input type="password" name="password" placeholder="Пароль">
+                <button type="submit">Зарегистрироваться</button>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
